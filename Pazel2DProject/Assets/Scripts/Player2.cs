@@ -30,6 +30,9 @@ public class Player2 : MonoBehaviour
             Vector2 jumpDir = rb.gravityScale > 0 ? Vector2.up : Vector2.down;
             rb.AddForce(jumpDir * jumpForce, ForceMode2D.Impulse);
         }
+
+
+        
     }
 
     bool CanJump()
@@ -37,6 +40,8 @@ public class Player2 : MonoBehaviour
         // gravityScale>0 时 地面在脚下（世界向下），gravityScale<0 时 地面在“脚上”（世界向上）
         Vector2 rayDir = rb.gravityScale > 0 ? Vector2.down : Vector2.up;
         return Physics2D.Raycast(transform.position, rayDir, rayDistance, groundLayer);
+
+
     }
 
     // （可选）在 Scene 视图可视化地面检测射线
