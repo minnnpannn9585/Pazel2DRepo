@@ -6,20 +6,33 @@ public class spikes : MonoBehaviour
 {
     public Vector3 player01Pos;
     public Vector3 player02Pos;
+    private Transform player01;
+    private Transform player02;
+
+    private void Start()
+    {
+        player01 = GameObject.Find("Player1").transform;
+        player02 = GameObject.Find("Player2").transform;
+    }
+
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            if (other.gameObject.name == "Player1")
-            {
-                other.transform.position = player01Pos;
-                other.gameObject.GetComponent<Rigidbody2D>().gravityScale = 1;
-            }
-            else if (other.gameObject.name == "Player2")
-            {
-                other.transform.position = player02Pos;
-                other.gameObject.GetComponent<Rigidbody2D>().gravityScale = -1;
-            }
+            player01.position = player01Pos;
+            player01.GetComponent<Rigidbody2D>().gravityScale = 1;
+            player02.position = player02Pos;
+            player02.GetComponent<Rigidbody2D>().gravityScale = -1;
+            // if (other.gameObject.name == "Player1")
+            // {
+            //     other.transform.position = player01Pos;
+            //     other.gameObject.GetComponent<Rigidbody2D>().gravityScale = 1;
+            // }
+            // else if (other.gameObject.name == "Player2")
+            // {
+            //     other.transform.position = player02Pos;
+            //     other.gameObject.GetComponent<Rigidbody2D>().gravityScale = -1;
+            // }
         }
     }
 }
