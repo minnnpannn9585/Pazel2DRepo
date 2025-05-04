@@ -16,7 +16,7 @@ public class GravityRotate90 : MonoBehaviour
             if (changeBlack)
                 playerBlack.GetComponent<PlayerBlack>().isLeftRight = !playerBlack.GetComponent<PlayerBlack>().isLeftRight;
             if(!changeBlack)
-                playerWhite.GetComponent<PlayerBlack>().isLeftRight = !playerBlack.GetComponent<PlayerBlack>().isLeftRight;
+                playerWhite.GetComponent<PlayerBlack>().isLeftRight = !playerWhite.GetComponent<PlayerBlack>().isLeftRight;
         }
     }
 }

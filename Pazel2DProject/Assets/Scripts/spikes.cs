@@ -11,6 +11,8 @@ public class spikes : MonoBehaviour
 
     private void Start()
     {
+        player01Pos = GameObject.Find("GameManagerLevel2").GetComponent<GameManagerLv2>().player01Pos;
+        player02Pos = GameObject.Find("GameManagerLevel2").GetComponent<GameManagerLv2>().player02Pos;
         player01 = GameObject.Find("Player1").transform;
         player02 = GameObject.Find("Player2").transform;
     }
@@ -20,9 +22,9 @@ public class spikes : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             player01.position = player01Pos;
-            player01.GetComponent<Rigidbody2D>().gravityScale = 1;
+            player01.GetComponent<PlayerBlack>().isLeftRight = true;
             player02.position = player02Pos;
-            player02.GetComponent<Rigidbody2D>().gravityScale = -1;
+            player02.GetComponent<PlayerBlack>().isLeftRight = true;
             // if (other.gameObject.name == "Player1")
             // {
             //     other.transform.position = player01Pos;
