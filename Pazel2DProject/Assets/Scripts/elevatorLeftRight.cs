@@ -13,13 +13,13 @@ public class elevatorLeftRight : MonoBehaviour
 
     void Start()
     {
-        startPos = transform.position;
+        startPos = transform.localPosition;
     }
 
     void Update()
     {
         // Mathf.Sin 返回 -1～1 之间的值，用振幅放大，并平移到 0～2amplitude
         float yOffset = Mathf.Sin(Time.time * frequency * Mathf.PI * 2) * amplitude;
-        transform.position = startPos + Vector3.left * yOffset;
+        transform.localPosition = startPos + Vector3.left * yOffset;
     }
 }

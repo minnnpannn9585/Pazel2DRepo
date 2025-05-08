@@ -281,8 +281,8 @@ GameObject:
   m_Component:
   - component: {fileID: 49962000}
   - component: {fileID: 49961999}
-  - component: {fileID: 49961998}
   - component: {fileID: 49961997}
+  - component: {fileID: 49962001}
   m_Layer: 0
   m_Name: Deathzone 2
   m_TagString: Untagged
@@ -335,20 +335,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &49961998
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 49961996}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 232a5f7c7c6aa4c00952ac709ba9d06f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player01Pos: {x: -9.5, y: 5, z: 0}
-  player02Pos: {x: -9.5, y: -5.2, z: 0}
 --- !u!212 &49961999
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -416,6 +402,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &49962001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 49961996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ba1f7eefed45394c94a432391bd3bf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player01Pos: {x: 0, y: 0, z: 0}
+  player02Pos: {x: 0, y: 0, z: 0}
 --- !u!1 &51892057
 GameObject:
   m_ObjectHideFlags: 0
@@ -2829,8 +2829,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1167757529}
   - component: {fileID: 1167757528}
-  - component: {fileID: 1167757527}
   - component: {fileID: 1167757526}
+  - component: {fileID: 1167757530}
   m_Layer: 0
   m_Name: Deathzone3
   m_TagString: Untagged
@@ -2883,20 +2883,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &1167757527
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1167757525}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 232a5f7c7c6aa4c00952ac709ba9d06f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player01Pos: {x: -9.5, y: 5, z: 0}
-  player02Pos: {x: -9.5, y: -5.2, z: 0}
 --- !u!212 &1167757528
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2964,6 +2950,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1167757530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1167757525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ba1f7eefed45394c94a432391bd3bf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player01Pos: {x: 0, y: 0, z: 0}
+  player02Pos: {x: 0, y: 0, z: 0}
 --- !u!1 &1210108057
 GameObject:
   m_ObjectHideFlags: 0
@@ -2974,8 +2974,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1210108061}
   - component: {fileID: 1210108060}
-  - component: {fileID: 1210108059}
   - component: {fileID: 1210108058}
+  - component: {fileID: 1210108062}
   m_Layer: 0
   m_Name: Deathzone
   m_TagString: Untagged
@@ -3028,20 +3028,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &1210108059
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1210108057}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 232a5f7c7c6aa4c00952ac709ba9d06f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player01Pos: {x: -9.5, y: 5, z: 0}
-  player02Pos: {x: -9.5, y: -5.2, z: 0}
 --- !u!212 &1210108060
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3109,6 +3095,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1210108062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1210108057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ba1f7eefed45394c94a432391bd3bf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player01Pos: {x: 0, y: 0, z: 0}
+  player02Pos: {x: 0, y: 0, z: 0}
 --- !u!1 &1244466676
 GameObject:
   m_ObjectHideFlags: 0
