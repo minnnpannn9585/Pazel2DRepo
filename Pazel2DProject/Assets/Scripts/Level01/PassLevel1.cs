@@ -6,12 +6,12 @@ using UnityEngine.SceneManagement;
 public class PassLevel1 : MonoBehaviour
 {
     public int score = 0;
-    
+    public int nextLevelIndex;
     private void Update()
     {
         if (score == 2)
         {
-            SceneManager.LoadScene("Level2");
+            SceneManager.LoadScene(nextLevelIndex);
         }
     }
 }

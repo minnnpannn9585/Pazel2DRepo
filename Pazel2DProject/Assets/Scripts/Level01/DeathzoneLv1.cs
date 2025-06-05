@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class DeathzoneLv1 : MonoBehaviour
 {
-    public Vector3 player01Pos;
-    public Vector3 player02Pos;
+    Vector3 player01Pos;
+    Vector3 player02Pos;
     private Transform player01;
     private Transform player02;
 
