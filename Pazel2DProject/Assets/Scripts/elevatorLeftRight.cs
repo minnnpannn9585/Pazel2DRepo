@@ -22,4 +22,20 @@ public class elevatorLeftRight : MonoBehaviour
         float yOffset = Mathf.Sin(Time.time * frequency * Mathf.PI * 2) * amplitude;
         transform.localPosition = startPos + Vector3.left * yOffset;
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            collision.transform.SetParent(transform);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            collision.transform.SetParent(null);
+        }
+    }
 }

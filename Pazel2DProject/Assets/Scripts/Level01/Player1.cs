@@ -20,7 +20,9 @@ public class Player1 : MonoBehaviour
         float h = 0;
         if (Input.GetKey(KeyCode.A)) h = -1;
         if (Input.GetKey(KeyCode.D)) h = +1;
-        rb.velocity = new Vector2(h * runSpeed, rb.velocity.y);
+        //rb.velocity = new Vector2(h * runSpeed, rb.velocity.y);
+        rb.AddForce(new Vector2(h * runSpeed * 2, 0), ForceMode2D.Force);
+        rb.velocity = new Vector2(Mathf.Clamp(rb.velocity.x, -2f, 2f), rb.velocity.y);
 
         // —— 跳跃 ——  
         if (Input.GetKeyDown(KeyCode.W) && CanJump())
