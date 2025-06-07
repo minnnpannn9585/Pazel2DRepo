@@ -4,24 +4,25 @@ using UnityEngine;
 
 public class Player2 : MonoBehaviour
 {
-    [Header("移动参数")]
     public Rigidbody2D rb;
-    public float runSpeed = 5f;
-
-    [Header("跳跃参数")]
-    public float jumpForce = 5f;
+    public float runSpeed = 2f;
+    public float jumpForce = 4f;
     public LayerMask groundLayer;
     public float rayDistance = 0.25f;
 
     private float horizontal;
+    
+    public float maxLeftVelocity = -2f;
+    public float maxRightVelocity = 2f;
 
     void Update()
     {
-        // —— 水平移动 —— 
         horizontal = 0;
         if (Input.GetKey(KeyCode.LeftArrow)) horizontal = -1;
         if (Input.GetKey(KeyCode.RightArrow)) horizontal = +1;
-        rb.velocity = new Vector2(horizontal * runSpeed, rb.velocity.y);
+        //rb.velocity = new Vector2(horizontal * runSpeed, rb.velocity.y);
+        rb.AddForce(new Vector2(horizontal * runSpeed * 2, 0), ForceMode2D.Force);
+        rb.velocity = new Vector2(Mathf.Clamp(rb.velocity.x, maxLeftVelocity, maxRightVelocity), rb.velocity.y);
 
         // —— 跳跃按键：DownArrow —— 
         if (Input.GetKeyDown(KeyCode.DownArrow) && CanJump())

@@ -5,21 +5,17 @@ using UnityEngine;
 public class Player1 : MonoBehaviour
 {
     public Rigidbody2D rb;
-    [Tooltip("左右移动速度")]
     public float runSpeed = 2f;
-    [Tooltip("跳跃冲量（用 Impulse 模式）")]
-    public float jumpForce = 5f;
-    [Tooltip("地面判定层级")]
+    public float jumpForce = 4f;
     public LayerMask groundLayer;
-    [Tooltip("地面检测射线长度")]
     public float rayDistance = 0.25f;
 
     void Update()
     {
-        // —— 水平输入 ——  
         float h = 0;
         if (Input.GetKey(KeyCode.A)) h = -1;
         if (Input.GetKey(KeyCode.D)) h = +1;
+        
         //rb.velocity = new Vector2(h * runSpeed, rb.velocity.y);
         rb.AddForce(new Vector2(h * runSpeed * 2, 0), ForceMode2D.Force);
         rb.velocity = new Vector2(Mathf.Clamp(rb.velocity.x, -2f, 2f), rb.velocity.y);
