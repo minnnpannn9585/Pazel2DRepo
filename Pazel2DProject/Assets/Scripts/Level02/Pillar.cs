@@ -4,70 +4,93 @@ using UnityEngine;
 
 public class PillarController : MonoBehaviour
 {
-    [Header("下砸参数")]
-    public float smashSpeed = 15f;      // 下砸速度
-    public float returnSpeed = 5f;      // 回升速度
-    public float delayBetweenPillars = 0.5f; // 柱子间的延迟
-    public float delayBetweenCycles = 1f;    // 完整循环后的间隔
+    [System.Serializable]
+    public class PillarGroup
+    {
+        public Transform[] pillars;
+        public Vector3 moveDirection = Vector3.down; // 控制方向
+        public float moveDistance = 0.46f;
+        [HideInInspector] public Vector3[] originalPositions;
+    }
 
-    [Header("柱子配置")]
-    public Transform[] pillars;         // 拖入3个柱子的Transform
-    private Vector3[] originalPositions;
+    [Header("下砸参数")]
+    public float smashSpeed = 15f;
+    public float returnSpeed = 5f;
+    public float delayBetweenPillars = 0.5f;
+    public float delayBetweenCycles = 1f;
+
+    [Header("柱子分组")]
+    public PillarGroup[] pillarGroups; // 第一组向下，第二组向上
 
     void Start()
     {
-        // 记录初始位置
-        originalPositions = new Vector3[pillars.Length];
-        for (int i = 0; i < pillars.Length; i++)
+        // 初始化所有组
+        foreach (var group in pillarGroups)
         {
-            originalPositions[i] = pillars[i].position;
+            group.originalPositions = new Vector3[group.pillars.Length];
+            for (int i = 0; i < group.pillars.Length; i++)
+            {
+                group.originalPositions[i] = group.pillars[i].position;
+            }
         }
 
-        // 开始自动循环
         StartCoroutine(InfiniteSmashLoop());
     }
 
-    // 无限循环协程
     System.Collections.IEnumerator InfiniteSmashLoop()
     {
-        while (true) // 无限循环
+        while (true)
         {
-            // 依次下砸所有柱子
-            for (int i = 0; i < pillars.Length; i++)
+            // 每组柱子依次运动
+            foreach (var group in pillarGroups)
             {
-                yield return StartCoroutine(SmashPillar(pillars[i], originalPositions[i]));
-                if (i < pillars.Length - 1) // 最后一个柱子后不等待
+                for (int i = 0; i < group.pillars.Length; i++)
                 {
-                    yield return new WaitForSeconds(delayBetweenPillars);
+                    yield return StartCoroutine(MovePillar(
+                        group.pillars[i],
+                        group.originalPositions[i],
+                        group.moveDirection,
+                        group.moveDistance
+                    ));
+                    
+                    if (i < group.pillars.Length - 1)
+                    {
+                        yield return new WaitForSeconds(delayBetweenPillars);
+                    }
                 }
             }
-
-            // 完整循环后的停顿
             yield return new WaitForSeconds(delayBetweenCycles);
         }
+    }
 
-        System.Collections.IEnumerator SmashPillar(Transform pillar, Vector3 originalPos)
+    System.Collections.IEnumerator MovePillar(Transform pillar, Vector3 originalPos, Vector3 direction, float distance)
+    {
+        Vector3 targetPos = originalPos + direction * distance;
+
+        // 运动阶段（下砸/上冲）
+        while (Vector3.Distance(pillar.position, targetPos) > 0.1f)
         {
-            Vector3 targetPos = originalPos + Vector3.down * 5f; // 下砸距离
-
-            // 下砸阶段
-            while (pillar.position.y > targetPos.y)
-            {
-                pillar.position += Vector3.down * smashSpeed * Time.deltaTime;
-                yield return null;
-            }
-
-            // 短暂停顿（可调整）
-            yield return new WaitForSeconds(0.1f);
-
-            // 回升阶段
-            while (pillar.position.y < originalPos.y)
-            {
-                pillar.position += Vector3.up * returnSpeed * Time.deltaTime;
-                yield return null;
-            }
-
-            pillar.position = originalPos; // 确保精确复位
+            pillar.position = Vector3.MoveTowards(
+                pillar.position,
+                targetPos,
+                smashSpeed * Time.deltaTime
+            );
+            yield return null;
         }
+
+        yield return new WaitForSeconds(0.1f);
+
+        // 返回阶段
+        while (Vector3.Distance(pillar.position, originalPos) > 0.1f)
+        {
+            pillar.position = Vector3.MoveTowards(
+                pillar.position,
+                originalPos,
+                returnSpeed * Time.deltaTime
+            );
+            yield return null;
+        }
+
+        pillar.position = originalPos;
     }
 }
